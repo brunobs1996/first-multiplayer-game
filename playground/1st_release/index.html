@@ -38,6 +38,10 @@
 
 
         function renderScreen() {
+
+            context.fillStyle = 'white'
+            context.fillRect(0, 0, 10, 10)
+
             for (playerId in game.players) {
                 const player = game.players[playerId]
                 context.fillStyle = 'black'
@@ -49,6 +53,8 @@
                 context.fillStyle = 'green'
                 context.fillRect(fruit.x, fruit.y, 1, 1)
             }
+
+            requestAnimationFrame(renderScreen)
         }
 
     </script>
