@@ -26,13 +26,25 @@
 
         function createGame() {
             const state = {
-            players: {
-                'player1': {x: 1, y:1},
-                'player2': {x: 9, y: 9}
-                },
-            fruits: {
-                'fruit1': {x: 3, y: 3}
+            players: {},
+            fruits: {}
+            }
+
+            function addPlayer(command) {
+                const playerId = command.playerId
+                const playerX = command.playerX
+                const playerY = command.playerY
+
+                state.players[playerId] = {
+                    x: playerX,
+                    y: playerY
                 }
+            }
+
+            function removePlayer(command) {
+                const playerId = command.playerId
+
+                delete state.players[playerId]
             }
 
             function movePlayer(command) {
@@ -76,6 +88,8 @@
             }
 
             return{
+                addPlayer,
+                removePlayer,
                 movePlayer,
                 state
             }
